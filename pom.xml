@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.baobao</groupId>
-    <artifactId>hellodemo</artifactId>
+    <artifactId>FirstRBAC</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>hellodemo</name>
+    <name>FirstRBAC</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
