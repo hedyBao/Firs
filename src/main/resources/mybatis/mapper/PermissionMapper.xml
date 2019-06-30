@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--你接口的包名是com.abc.dao,接口名是NameMapper.java，那么你的mapper.xml的namespace应该是com.abc.dao.NameMapper-->
+<mapper namespace="com.baobao.hellodemo.dao.PermissionMapper">
+
+    <select id="queryByPermissionIdList" resultType="com.baobao.hellodemo.entity.Permission">
+        select permissionId,permissionName from PermissionRbac where permissionId in
+        <foreach collection="list" open ="(" close=")" separator=","
+                 item = "item" > #{item}
+        </foreach>
+    </select>
+
+
+    <delete id="deleByPIds" >
+        delete from PermissionRbac where permissionId in
+        <foreach collection="list" open ="(" close=")" separator=","
+                 item = "item" > #{item}
+        </foreach>
+
+    </delete>
+
+
+
+
+
+</mapper>

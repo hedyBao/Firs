@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--你接口的包名是com.abc.dao,接口名是NameMapper.java，那么你的mapper.xml的namespace应该是com.abc.dao.NameMapper-->
+<mapper namespace="com.baobao.hellodemo.dao.UserRoleMapper">
+
+
+    <!--resultMap对应的是表与实体类的映射  - type 数据库表对应的实体类，别名或完整类名都可以-->
+    <resultMap id="UserRoleResultMap" type="com.baobao.hellodemo.entity.UserRole">
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userName" property="userName" jdbcType="VARCHAR" />
+    <result column="roleId" property="roleId" jdbcType="INTEGER" />
+
+    </resultMap>
+
+    <select id="queryByUserNameList"  resultMap="UserRoleResultMap">
+        select * from UserRoleRbac where  userName in
+        <foreach collection="list" open ="(" close=")" separator=","
+                 item = "item" index="i"> #{item}
+        </foreach>
+    </select>
+
+
+    <delete id="deleByUNames" >
+        delete from UserRoleRbac where userName in
+        <foreach collection="list" open ="(" close=")" separator=","
+                 item = "item" > #{item}
+        </foreach>
+
+    </delete>
+
+    <delete id="deleURByRIds" >
+        delete from UserRoleRbac where roleId in
+        <foreach collection="list" open ="(" close=")" separator=","
+                 item = "item" > #{item}
+        </foreach>
+
+    </delete>
+
+
+
+
+
+
+</mapper>

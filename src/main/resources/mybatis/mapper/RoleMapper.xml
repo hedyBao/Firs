@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--你接口的包名是com.abc.dao,接口名是NameMapper.java，那么你的mapper.xml的namespace应该是com.abc.dao.NameMapper-->
+<mapper namespace="com.baobao.hellodemo.dao.RoleMapper">
+    <!--<resultMap id="RoleResultMap" type="com.baobao.hellodemo.entity.UserRole">-->
+        <!--<id column="id" property="id" jdbcType="INTEGER" />-->
+        <!--<result column="roleId" property="roleId" jdbcType="INTEGER" />-->
+        <!--<result column="roleName" property="roleName" jdbcType="VARCHAR" />-->
+    <!--</resultMap>-->
+
+
+    <select id="queryByRoleIdList"  resultType="com.baobao.hellodemo.entity.Role">
+        select * from RoleRbac where roleId in
+        <foreach collection="list" open ="(" close=")" separator=","
+                 item = "item" > #{item}
+        </foreach>
+
+    </select>
+
+
+
+    <delete id="deleByRoleIds" >
+        delete from RoleRbac where roleId in
+        <foreach collection="list" open ="(" close=")" separator=","
+                 item = "item" > #{item}
+        </foreach>
+
+    </delete>
+
+
+
+    <select id="findRsByIds"  resultType="com.baobao.hellodemo.entity.Role">
+        select * from RoleRbac where roleId in
+        <foreach collection="list" open ="(" close=")" separator=","
+                 item = "item" > #{item}
+        </foreach>
+
+    </select>
+
+
+
+
+
+
+</mapper>
