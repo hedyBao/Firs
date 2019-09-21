@@ -27,9 +27,9 @@
         <appender-ref ref="console" />
         <appender-ref ref="file" />
     </root>
-    <logger name="com.baobao.hellodemo.controller"/>
+    <logger name="com.tomas.hellodemo.controller"/>
     <!--logback.LogbackDemo：类的全路径 -->
-    <logger name="com.baobao.hellodemo.controller.GetUserListController" level="WARN" additivity="false">
+    <logger name="com.tomas.hellodemo.controller.GetUserListController" level="WARN" additivity="false">
         <appender-ref ref="console"/>
     </logger>
 </configuration>
